@@ -67,7 +67,7 @@ class App extends Component {
           </h1>
 
           <p class="subtitle">
-            <strong>Book</strong> of <strong>Wisdom</strong>
+            <strong>Book of Wisdom</strong>
           </p>
           <p class="subtitle">
             By <em>Laura Ingalls Wilder</em>
