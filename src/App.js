@@ -5,12 +5,56 @@ import './Wisdoms';
 import { Wisdoms } from './Wisdoms';
 
 class App extends Component {
-  render() {
+  constructor() {
+    super();
 
+    // cache voice to avoid find voice on every click.
+    this.voice = null;
+  }
+
+  speak(event, text) {
+
+    // alert(text);
+
+    if (!('speechSynthesis' in window)) {
+      alert('TTS is not available');
+      return;
+    }
+
+    if (!this.voice) {
+      let voices = speechSynthesis.getVoices();
+
+      for (var i in voices) {
+          if (voices[i].lang === 'en-US') {
+              this.voice = voices[i];
+              break;
+          }
+      }
+    }
+
+    var msg = new SpeechSynthesisUtterance();
+    msg.voice = this.voice;
+    msg.rate = 1;   // TODO: allow user change it
+    msg.pitch = 1;  // TODO: allow user change it
+    msg.text = text;
+    msg.onend = function(event) {
+        console.log('Finished in ' + event.elapsedTime + 'milliseconds.');
+    };
+
+    speechSynthesis.speak(msg);
+  }
+
+  render() {
     const wisdoms = Wisdoms.items.map(item => {
       return (
         <div class="tile is-child box">
           <p>{item.text}</p>
+          <a class="button" onClick={ (event) => this.speak(event, item.text)}>
+            <span class="icon is-medium">
+              <i class="fas fa-play"></i>
+            </span>
+            <span>Speak to me</span>
+          </a>
         </div>
       );
     });
