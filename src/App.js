@@ -25,6 +25,9 @@ class App extends Component {
           <p class="subtitle">
             <strong>Book</strong> of <strong>Wisdom</strong>
           </p>
+          <p class="subtitle">
+            By <em>Laura Ingalls Wilder</em>
+          </p>
           <hr/>
           <div class="content is-large">
             <div class="tile is-ancestor">
