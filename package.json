@@ -13,7 +13,7 @@
     "build": "react-scripts build && sw-precache --root='build/' --static-file-globs='build/**/!(*.map)'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy": "react-scripts build",
+    "predeploy": "react-scripts build && sw-precache --root='build/' --static-file-globs='build/**/!(*.map)'",
     "deploy": "gh-pages --dist build --branch master --message \"Generated from $(git rev-parse --short HEAD)@src\""
   },
   "devDependencies": {
