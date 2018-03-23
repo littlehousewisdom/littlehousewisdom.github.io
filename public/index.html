@@ -55,5 +55,12 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+      } else {
+        console.log('service work is not supported by current browser');
+      }
+    </script>
   </body>
 </html>
